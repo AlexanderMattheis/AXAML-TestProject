@@ -1,0 +1,45 @@
+<!--
+  StatusBarView:
+  - Wiederverwendbare Statusanzeige-Komponente für kurze Hinweise, Fortschritts-/Ergebnistexte und Fehlermeldungen.
+  - Text wird über die Property `StatusText` am UserControl gebunden
+  - lange Inhalte werden automatisch umgebrochen und bei Bedarf vertikal-scrollbar dargestellt
+-->
+<UserControl
+    x:Class="TextExtractorGUI.Controls.StatusBarView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="Root">
+    
+    <!--
+      Border:
+      - Gibt der Statusanzeige eine "Card"-Optik (Hintergrund, Rundung, Padding).
+      - Background kommt aus DynamicResource, damit Theme-/OS-Wechsel zur Laufzeit übernommen werden.
+    -->
+    <Border
+        Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+        CornerRadius="8"
+        Padding="10">
+        
+        <!--
+          ScrollViewer:
+          - horizontal deaktiviert, um unschöne Seitwärts-Scrollbars zu vermeiden
+            (stattdessen wird Text umgebrochen)
+          - vertikal automatisch, falls der Status länger ist als der verfügbare Platz
+        -->
+        <ScrollViewer 
+            HorizontalScrollBarVisibility="Disabled" 
+            VerticalScrollBarVisibility="Auto">
+            <!--
+              TextBlock:
+              - Opacity leicht reduziert für dezente Status-Optik.
+              - Text bindet an StatusText am Root (UserControl-Property).
+              - Wrap sorgt dafür, dass lange Zeilen umbrechen statt horizontal zu scrollen.
+            -->
+            <TextBlock
+                Opacity="0.9"
+                Text="{Binding StatusText, ElementName=Root}"
+                TextWrapping="Wrap" />
+        </ScrollViewer>
+        
+    </Border>
+</UserControl>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextExtractor", "TextExtractor\TextExtractor.csproj", "{125FDA69-A290-4403-BAB8-1BE933278CAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextExtractorGUI", "TextExtractorGUI\TextExtractorGUI.csproj", "{51C08C42-4117-4099-8903-88A7F50A0C68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{125FDA69-A290-4403-BAB8-1BE933278CAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125FDA69-A290-4403-BAB8-1BE933278CAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125FDA69-A290-4403-BAB8-1BE933278CAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125FDA69-A290-4403-BAB8-1BE933278CAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C08C42-4117-4099-8903-88A7F50A0C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C08C42-4117-4099-8903-88A7F50A0C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C08C42-4117-4099-8903-88A7F50A0C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C08C42-4117-4099-8903-88A7F50A0C68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

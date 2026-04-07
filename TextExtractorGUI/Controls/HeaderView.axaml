@@ -1,0 +1,24 @@
+<!--
+    Einfache „Header“-Komponente mit Titel und Untertitel.
+    x:Name="Root" ermöglicht Bindings per ElementName=Root auf Properties des Controls
+    (z.B. Title/Subtitle als StyledProperty oder DirectProperty im Code-Behind).
+-->
+<UserControl
+    x:Class="TextExtractorGUI.Controls.HeaderView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="Root">
+    <StackPanel Spacing="4">
+        <!-- Titelzeile: größer und halb-fett -->
+        <TextBlock
+            FontSize="22"
+            FontWeight="SemiBold"
+            Text="{Binding Title, ElementName=Root}" />
+
+        <!-- Untertitel: leicht abgeschwächt, mehrzeilig umbrechend -->
+        <TextBlock
+            Opacity="0.75"
+            Text="{Binding Subtitle, ElementName=Root}"
+            TextWrapping="Wrap" />
+    </StackPanel>
+</UserControl>

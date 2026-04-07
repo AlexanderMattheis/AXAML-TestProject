@@ -1,0 +1,73 @@
+<!--
+  PathPickerCard:
+  Wiederverwendbare UI-Karte zum Auswählen/Eingeben eines Pfads.
+  Bindet seine Anzeige- und Command-Eigenschaften an den UserControl-Root (ElementName=Root),
+  damit es wie ein "Custom Control" mit eigenen Properties genutzt werden kann.
+-->
+<UserControl
+    x:Class="TextExtractorGUI.Controls.PathPickerCard"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="Root">
+    <!--
+      Border:
+      - Sorgt für "Card"-Optik (Hintergrund, abgerundete Ecken, Innenabstand).
+      - Background kommt aus einem DynamicResource (Theme/OS kann zur Laufzeit wechseln)
+    -->
+    <Border
+        Background="{DynamicResource SystemControlBackgroundBaseLowBrush}"
+        CornerRadius="10"
+        Padding="14">
+
+        <!--
+          Grid-Layout:
+          - 2 Spalten: links flexibel (*), rechts automatisch (Auto) für den Button.
+          - 2 Zeilen: Kopfzeile (Auto) + Eingabezeile (Auto).
+          - Spacing trennt die Elemente optisch.
+        -->
+        <Grid
+            ColumnDefinitions="*,Auto"
+            ColumnSpacing="10"
+            RowDefinitions="Auto,Auto"
+            RowSpacing="10">
+
+            <!--
+              Header-Text:
+              - Sitzt in Zeile 0 und spannt über beide Spalten (ColumnSpan="2"),
+                damit er über TextBox + Button steht.
+              - Text wird über die Property "Header" am Root gebunden.
+            -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                FontWeight="SemiBold"
+                Opacity="0.9"
+                Text="{Binding Header, ElementName=Root}" />
+
+            <!--
+              Eingabefeld:
+              - Zeile 1, Spalte 0 (nimmt den verfügbaren Platz ein)
+              - Text bindet an "Path" am Root (typisch: ausgewählter Dateipfad/Ordnerpfad)
+              - Watermark bindet an "Watermark" am Root (Platzhaltertext, solange leer)
+            -->
+            <TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="{Binding Path, ElementName=Root}"
+                Watermark="{Binding Watermark, ElementName=Root}" />
+
+            <!--
+              Button:
+              - Zeile 1, Spalte 1 (Auto-Spalte), Mindestbreite für konsistente Optik
+              - Content bindet an "ButtonText" am Root (z.B. "Durchsuchen…")
+              - Command bindet an "ButtonCommand" am Root (z.B. öffnet File/Folder Picker)
+            -->
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                MinWidth="120"
+                Content="{Binding ButtonText, ElementName=Root}"
+                Command="{Binding ButtonCommand, ElementName=Root}" />
+        </Grid>
+    </Border>
+</UserControl>
