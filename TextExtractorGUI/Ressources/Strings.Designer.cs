@@ -164,5 +164,41 @@ namespace TextExtractorGUI.Ressources {
                 return ResourceManager.GetString("Notes_Name", resourceCulture);
             }
         }
+        
+        internal static string Select_IndexHtml {
+            get {
+                return ResourceManager.GetString("Select_IndexHtml", resourceCulture);
+            }
+        }
+        
+        internal static string Select_MarkdownOutputPath {
+            get {
+                return ResourceManager.GetString("Select_MarkdownOutputPath", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Title {
+            get {
+                return ResourceManager.GetString("Settings_Title", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Language {
+            get {
+                return ResourceManager.GetString("Settings_Language", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Theme {
+            get {
+                return ResourceManager.GetString("Settings_Theme", resourceCulture);
+            }
+        }
+        
+        internal static string Settings_Close {
+            get {
+                return ResourceManager.GetString("Settings_Close", resourceCulture);
+            }
+        }
     }
 }

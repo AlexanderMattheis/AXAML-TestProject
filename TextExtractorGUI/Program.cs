@@ -3,7 +3,15 @@ using Avalonia;
 
 namespace TextExtractorGUI;
 
-class Program
+/// <summary>
+/// Represents the entry point of the application.
+/// </summary>
+/// <remarks>
+/// This class initializes and starts the Avalonia application
+/// with a classic desktop lifetime. It configures the application
+/// environment and is critical for the overall execution flow.
+/// </remarks>
+static class Program
 {
     // Initialization code. Don't use any Avalonia, third-party APIs or any
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized

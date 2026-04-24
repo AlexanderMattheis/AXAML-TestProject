@@ -1,0 +1,107 @@
+<Window d:DesignHeight="470"
+        d:DesignWidth="960"
+        mc:Ignorable="d"
+        x:Class="TextExtractorGUI.Views.MainWindow"
+        x:DataType="mainWindow:MainViewModel"
+        xmlns="https://github.com/avaloniaui"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mainWindow="clr-namespace:TextExtractorGUI.ViewModels.MainWindow"
+        xmlns:controls="clr-namespace:TextExtractorGUI.Controls"
+        xmlns:markup="clr-namespace:TextExtractorGUI.Extensions.Markup"
+        MaxHeight="470"
+        MaxWidth="960"
+        Padding="20"
+        Title="{markup:Loc AppTitle}">
+
+    <!-- Äußeres Grid mit 3 Reihen: Header (Auto), Inhalt (flexible Größe), Footer (Auto) -->
+    <!-- RowSpacing definiert 14 Pixel Abstand zwischen den Reihen -->
+    <Grid RowDefinitions="Auto,*,Auto" RowSpacing="14">
+        
+        <!-- Inneres Grid für Header-Bereich mit 2 Spalten: Inhalt (flexibel), Button (automatisch) -->
+        <!-- ColumnSpacing definiert 12 Pixel Abstand zwischen den Spalten -->
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            
+            <!-- Benutzerdefiniertes HeaderView-Control in der ersten Spalte -->
+            <!-- Bindet Titel und Untertitel über Markup-Extensions zu lokalisierten Strings -->
+            <controls:HeaderView
+                Grid.Column="0"
+                Title="{markup:Loc Header_Title}"
+                Subtitle="{markup:Loc Header_Subtitle}" />
+
+            <!-- Settings-Button in der zweiten Spalte (rechts) -->
+            <!-- VerticalAlignment="Top" positioniert den Button oben -->
+            <!-- MinWidth="140" setzt eine Mindestbreite -->
+            <!-- Command bindet an das OpenSettingsCommand des ViewModels -->
+            <Button Grid.Column="1"
+                    VerticalAlignment="Top"
+                    Command="{Binding OpenSettingsCommand}">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <Svg Path="avares://TextExtractorGUI/Assets/tools.svg"
+                         Width="32"
+                         Height="32"
+                         Stretch="UniformToFill" />
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+        <!--
+            Hauptinhalt ist scrollbar:
+            - Horizontal: aus (Layout soll nicht seitlich „wackeln“)
+            - Vertikal: automatisch, falls Fenster kleiner wird
+        -->
+        <ScrollViewer
+            Grid.Row="1"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+
+            <!--
+                Formularbereich: mehrere Karten untereinander
+                (RowDefinitions hier sind "Auto" -> Höhe richtet sich nach Inhalt)
+            -->
+            <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="12">
+
+                <!-- Eingabe: Pfad zur index.html (Quelle) -->
+                <controls:PathPickerCard
+                    Grid.Row="0"
+                    Header="{markup:Loc Input_Header}"         
+                    Path="{Binding IndexHtmlPfad}"           
+                    Watermark="{markup:Loc Input_Watermark}"
+                    ButtonText="{markup:Loc Input_Browse}"
+                    ButtonCommand="{Binding BrowseIndexHtmlCommand}" />
+
+                <!-- Ausgabe: Pfad zur Markdown-Datei (Ziel) -->
+                <controls:PathPickerCard
+                    Grid.Row="1"
+                    Header="{markup:Loc Output_Header}"
+                    Path="{Binding MarkdownPfad}"
+                    Watermark="{markup:Loc Output_Watermark}"
+                    ButtonText="{markup:Loc Output_SaveAs}"
+                    ButtonCommand="{Binding BrowseMarkdownCommand}" />
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Fußbereich: Status links, Action-Button rechts -->
+        <Grid Grid.Row="2" ColumnDefinitions="* Auto" ColumnSpacing="10">
+            <!-- Statusanzeige (z. B. "Bereit", Fortschritt, Fehlermeldungen) -->
+            <controls:StatusBarView Grid.Column="0"
+                                    StatusText="{Binding Status}" />
+
+            <!--
+                Rechts: eigener Grid-Container, um Button sauber unten/rechts zu platzieren.
+                Row 0 (*) dient als "Spacer", Row 1 (Auto) enthält den Button
+            -->
+            <Grid Grid.Column="1" RowDefinitions="*,Auto">
+                <Button Grid.Row="1"
+                        Command="{Binding StartBerechnungCommand}"
+                        Content="{markup:Loc Action_Extract}"
+                        HorizontalAlignment="Right"
+                        MinWidth="120"
+                        Theme="{DynamicResource AccentButtonTheme}"
+                        Margin="15"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

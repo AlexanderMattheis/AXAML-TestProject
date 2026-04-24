@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:TextExtractorGUI.ViewModels.Settings"
+        xmlns:markup="clr-namespace:TextExtractorGUI.Extensions.Markup"
+        x:Class="TextExtractorGUI.Views.SettingsWindow" 
+        x:DataType="vm:SettingsViewModel"
+        Title="{markup:Loc Settings_Title}"
+        Width="420"
+        Height="240"
+        Padding="16">
+
+    <!-- Vertikales Layout-Panel mit 10 Pixel Abstand zwischen Elementen -->
+    <StackPanel Spacing="10">
+        <!-- Label für Sprach-Einstellung -->
+        <TextBlock Text="{markup:Loc Settings_Language}" />
+        <!-- Dropdown-Liste mit verfügbaren Sprachen, bindet an ViewModel-Eigenschaften -->
+        <ComboBox ItemsSource="{Binding VerfuegbareSprachen}"
+                  SelectedItem="{Binding SelektierteSprache}" />
+
+        <!-- Label für Thema-Einstellung -->
+        <TextBlock Text="{markup:Loc Settings_Theme}" Margin="0,8,0,0"/>
+        <!-- Dropdown-Liste mit verfügbaren Themen, bindet an ViewModel-Eigenschaften -->
+        <ComboBox ItemsSource="{Binding VerfuegbareThemes}"
+                  SelectedItem="{Binding SelektiertesThema}" />
+
+        <!-- Horizontale Trennlinie mit Abstand -->
+        <Separator Margin="0,10,0,0"/>
+        
+        <!-- Schließen-Button rechtsbündig mit Click-Event-Handler -->
+        <Button Content="{markup:Loc Settings_Close}"
+                HorizontalAlignment="Right"
+                Click="Close_OnClick"/>
+    </StackPanel>
+</Window>

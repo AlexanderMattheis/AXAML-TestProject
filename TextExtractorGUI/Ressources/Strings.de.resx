@@ -86,4 +86,22 @@
     <data name="Notes_Name" xml:space="preserve">
         <value>notizen.md</value>
     </data>
+    <data name="Select_IndexHtml" xml:space="preserve">
+        <value>index.html auswählen</value>
+    </data>
+    <data name="Select_MarkdownOutputPath" xml:space="preserve">
+        <value>Markdown-Datei speichern</value>
+    </data>
+    <data name="Settings_Title" xml:space="preserve">
+        <value>Einstellungen</value>
+    </data>
+    <data name="Settings_Language" xml:space="preserve">
+        <value>Sprache</value>
+    </data>
+    <data name="Settings_Theme" xml:space="preserve">
+        <value>Thema</value>
+    </data>
+    <data name="Settings_Close" xml:space="preserve">
+        <value>Schließen</value>
+    </data>
 </root>
